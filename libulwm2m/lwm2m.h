@@ -9,6 +9,12 @@
 #define LWM2M_VERSION LWM2M_VERSION_1_0
 #endif
 
+#define DEFAULT_ENDPOINT_NAME            "ulwm2m_demo_client"
+#define DEFAULT_SERVER_URI               "coap://leshan.eclipseprojects.io:5683"
+#define DEFAULT_TIMEOUT_POLL             100
+#define DEFAULT_BOOTSTRAP_SERVER         0 /* no bootstrap */
+#define DEFAULT_SECURITY_MODE            3 /* no security */
+
 #define LWM2M_SECURITY_OBJECT            0
 #define LWM2M_SERVER_OBJECT              1
 #define LWM2M_ACL_OBJECT                 2

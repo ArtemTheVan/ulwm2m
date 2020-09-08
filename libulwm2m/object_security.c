@@ -9,11 +9,11 @@
 
 static char sz_server_uri[48] =
 {
-  "coap://leshan.eclipseprojects.io:5683"
+  DEFAULT_SERVER_URI
 };
 
-static uint8_t  bootstrap_server = 0;
-static uint8_t  security_mode = 3; /* no security */
+static uint8_t  bootstrap_server = DEFAULT_BOOTSTRAP_SERVER;
+static uint8_t  security_mode = DEFAULT_SECURITY_MODE;
 
 int security_read( struct t_lwm2m_data *p_data )
 {

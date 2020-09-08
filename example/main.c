@@ -11,6 +11,7 @@ static uint32_t udp_ip = 0;
 static uint16_t udp_port = 0;
 static uint8_t shared_mem[0x100];
 
+
 const struct t_lwm2m_obj base = 
 {
     .id = LWM2M_SECURITY_OBJECT,
@@ -115,7 +116,7 @@ int main(int argc, char *argv[])
   lwm2m.recv = network_recv;
   lwm2m.send = network_send;
 
-  lwm2m.sz_endpoint_name = "ulwm2m_demo_client";
+  lwm2m.sz_endpoint_name = DEFAULT_ENDPOINT_NAME;
   for(;;)
   {
     res = lwm2m_process( &lwm2m, event, udp_timestamp() );
@@ -123,7 +124,7 @@ int main(int argc, char *argv[])
       break;
 
     /* just poll for RX data */
-    res = lwm2m.recv( 0, 0, 100 );
+    res = lwm2m.recv( 0, 0, DEFAULT_TIMEOUT_POLL );
     if( res < 0 )
       event = LWM2M_EVENT_IDLE;
     else if( res == 0 )

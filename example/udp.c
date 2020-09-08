@@ -47,8 +47,8 @@ int socket_wait_data( int fd, int ms )
 
 int udp_init( int port )
 {
-  struct sockaddr_in src;
-  int res;
+  struct sockaddr_in src = { 0 };
+  int res = 0;
 
 #if _WIN32
   {
@@ -78,7 +78,7 @@ int udp_init( int port )
   }
 
   res = bind( udp_socket, (struct sockaddr *)&src, sizeof (src) );
-  if ( res < 0)
+  if ( res < 0 )
   {
     closesocket( udp_socket );
     return -3;
@@ -116,7 +116,7 @@ int udp_send( uint32_t ip, uint16_t port, uint8_t *p, uint16_t size )
 int udp_recv( uint32_t *ip, uint16_t *port, uint8_t *p, uint16_t size, int timeout )
 {
   int res;
-  struct sockaddr_in  who = { 0 };
+  struct sockaddr_in who = { 0 };
 
   res = socket_wait_data( udp_socket, timeout );
   if( res <= 0 )

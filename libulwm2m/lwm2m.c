@@ -293,7 +293,7 @@ static int lwm2m_init_server_connection( struct t_lwm2m *p )
   
   if(item.p_obj->read(&item ) < 0 )
     return -1;
-  
+
   if( p->mem_size < (item.size + 1) )
     return -1;
 
@@ -313,7 +313,7 @@ static int lwm2m_init_server_connection( struct t_lwm2m *p )
 
   *e++ = '\0';
 
-  if( p->init( s,  _strtoi( e ), is_secure ) < 0 )
+  if( p->init( s, _strtoi( e ), is_secure ) < 0 )
     return -1;
 
   return 0;
@@ -874,7 +874,7 @@ static int lwm2m_object_observe_content( struct t_lwm2m *p, struct t_lwm2m_data 
 int lwm2m_process( struct t_lwm2m *p, int event, uint32_t timestamp )
 {
   int res;
-  struct t_lwm2m_data item = {0 };
+  struct t_lwm2m_data item = { 0 };
 
   switch( LWM2M_GET_EVENT_ID( event ) )
   {
